@@ -1,0 +1,182 @@
+00007000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.15.04
+Created On: 3/12/2016 7:20:41 PM
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :  Test lsl
+00000000                             3  * Written by :  Joon Jung
+00000000                             4  * Date       :  03/13/2016
+00000000                             5  * Description:  Tests for LSL/ASR/ROL/CMP/Bcc(LE,GT,CC)
+00000000                             6  *-----------------------------------------------------------
+00007000                             7      ORG    $7000
+00007000                             8  START:                  ; first instruction of program
+00007000                             9  
+00007000                            10  * Put program code here
+00007000  123C 0002                 11          MOVE.B #2,D1
+00007004  143C 000A                 12          MOVE.B #$A,D2
+00007008  2C3C 12349873             13          MOVE.L #$12349873,D6
+0000700E  2E3C FFFF1024             14          MOVE.L #$FFFF1024,D7
+00007014                            15          
+00007014                            16  *   *CMP & BGT/BLE/BCC
+00007014                            17  *       CMP.B D0,D1
+00007014                            18  *       BGT NEXT1
+00007014                            19  *NEXT1
+00007014                            20  *       CMP.B D1,D2
+00007014                            21  *       BLE NEXT2
+00007014                            22  *NEXT2
+00007014                            23  *       CMP.B (A0),D6
+00007014                            24  *       BCC NEXT3
+00007014                            25  *NEXT3
+00007014                            26  *       CMP.B (A1),D7
+00007014                            27  *       BGT NEXT4
+00007014                            28  *NEXT4
+00007014                            29  *       CMP.B (A0)+,D1
+00007014                            30  *       BLE NEXT5
+00007014                            31  *NEXT5
+00007014  B219                      32          CMP.B (A1)+,D1
+00007016  B220                      33          CMP.B -(A0),D1
+00007018  B221                      34          CMP.B -(A1),D1
+0000701A  B438 1234                 35          CMP.B $1234,D2
+0000701E  B438 AA00                 36          CMP.B $FFFFAA00,D2
+00007022                            37          *BCC NEXT6
+00007022                            38  NEXT6
+00007022  BC39 0000EECA             39          CMP.B $EECA,D6
+00007028  BE39 0000C000             40          CMP.B $0000C000,D7
+0000702E  B23C 00FF                 41          CMP.B #$FF,D1
+00007032  B23C 0001                 42          CMP.B #$1,D1
+00007036                            43          
+00007036                            44          
+00007036                            45      *CMP.B
+00007036  B200                      46          CMP.B D0,D1
+00007038  B401                      47          CMP.B D1,D2
+0000703A  BC10                      48          CMP.B (A0),D6
+0000703C  BE11                      49          CMP.B (A1),D7
+0000703E  B218                      50          CMP.B (A0)+,D1
+00007040  B219                      51          CMP.B (A1)+,D1
+00007042  B220                      52          CMP.B -(A0),D1
+00007044  B221                      53          CMP.B -(A1),D1
+00007046  B438 1234                 54          CMP.B $1234,D2
+0000704A  B438 AA00                 55          CMP.B $FFFFAA00,D2
+0000704E  BC39 0000EECA             56          CMP.B $EECA,D6
+00007054  BE39 0000C000             57          CMP.B $0000C000,D7
+0000705A  B23C 00FF                 58          CMP.B #$FF,D1
+0000705E  B23C 0001                 59          CMP.B #$1,D1
+00007062                            60      
+00007062                            61      *CMP.W
+00007062  B240                      62          CMP.W D0,D1
+00007064  B441                      63          CMP.W D1,D2
+00007066  BC50                      64          CMP.W (A0),D6
+00007068  BE51                      65          CMP.W (A1),D7
+0000706A  B258                      66          CMP.W (A0)+,D1
+0000706C  B259                      67          CMP.W (A1)+,D1
+0000706E  B260                      68          CMP.W -(A0),D1
+00007070  B261                      69          CMP.W -(A1),D1
+00007072  B478 5668                 70          CMP.W $5668,D2
+00007076  B478 BB00                 71          CMP.W $FFFFBB00,D2
+0000707A  BC79 0000BBBA             72          CMP.W $BBBA,D6
+00007080  BE79 0000EEFA             73          CMP.W $0000EEFA,D7
+00007086  B27C 00CF                 74          CMP.W #$CF,D1
+0000708A  B27C 0002                 75          CMP.W #$2,D1
+0000708E                            76          
+0000708E                            77      *CMP.L
+0000708E  B280                      78          CMP.L D0,D1
+00007090  B481                      79          CMP.L D1,D2
+00007092  BC90                      80          CMP.L (A0),D6
+00007094  BE91                      81          CMP.L (A1),D7
+00007096  B298                      82          CMP.L (A0)+,D1
+00007098  B299                      83          CMP.L (A1)+,D1
+0000709A  B2A0                      84          CMP.L -(A0),D1
+0000709C  B2A1                      85          CMP.L -(A1),D1
+0000709E  B4B9 00008642             86          CMP.L $8642,D2
+000070A4  B4B8 AAA0                 87          CMP.L $FFFFAAA0,D2
+000070A8  BCB9 0000EECA             88          CMP.L $EECA,D6
+000070AE  BEB9 0000AAA0             89          CMP.L $0000AAA0,D7
+000070B4  B2BC 000000AF             90          CMP.L #$AF,D1
+000070BA  B2BC 00000003             91          CMP.L #$3,D1
+000070C0                            92  
+000070C0                            93      *LSL
+000070C0  E508                      94          LSL.B #2,D0
+000070C2  E408                      95          LSR.B #2,D0
+000070C4  E328                      96          LSL.B D1,D0
+000070C6                            97          
+000070C6  E548                      98          LSL.W #2,D0
+000070C8  E448                      99          LSR.W #2,D0
+000070CA  E368                     100          LSL.W D1,D0
+000070CC                           101  
+000070CC  E588                     102          LSL.L #2,D0
+000070CE  E488                     103          LSR.L #2,D0
+000070D0  E3A8                     104          LSL.L D1,D0
+000070D2                           105          
+000070D2  E3D1                     106          LSL (A1)
+000070D4  E3D2                     107          LSL (A2)
+000070D6  E3D9                     108          LSL (A1)+
+000070D8  E3DA                     109          LSL (A2)+
+000070DA  E3E1                     110          LSL -(A1)
+000070DC  E3E2                     111          LSL -(A2)
+000070DE  E3F8 2000                112          LSL $2000
+000070E2  E3F8 1222                113          LSL $1222
+000070E6  E3F9 0000A200            114          LSL $A200
+000070EC  E3F9 FFFF5500            115          LSL $FFFF5500
+000070F2                           116          
+000070F2                           117      *ASR
+000070F2  E400                     118          ASR.B #2,D0
+000070F4  E500                     119          ASL.B #2,D0
+000070F6  E220                     120          ASR.B D1,D0
+000070F8                           121          
+000070F8  E440                     122          ASR.W #2,D0
+000070FA  E540                     123          ASL.W #2,D0
+000070FC  E260                     124          ASR.W D1,D0
+000070FE                           125  
+000070FE  E480                     126          ASR.L #2,D0
+00007100  E580                     127          ASL.L #2,D0
+00007102  E2A0                     128          ASR.L D1,D0
+00007104                           129          
+00007104  E0D1                     130          ASR (A1)
+00007106  E0D2                     131          ASR (A2)
+00007108  E0D9                     132          ASR (A1)+
+0000710A  E0DA                     133          ASR (A2)+
+0000710C  E0E1                     134          ASR -(A1)
+0000710E  E0E2                     135          ASR -(A2)
+00007110  E0F8 2000                136          ASR $2000
+00007114  E0F8 1222                137          ASR $1222
+00007118  E0F9 0000A200            138          ASR $A200
+0000711E  E0F9 FFFF5500            139          ASR $FFFF5500   
+00007124                           140  
+00007124                           141      
+00007124                           142      *ROL
+00007124  E518                     143          ROL.B #2,D0
+00007126  E418                     144          ROR.B #2,D0
+00007128  E338                     145          ROL.B D1,D0
+0000712A                           146          
+0000712A  E558                     147          ROL.W #2,D0
+0000712C  E458                     148          ROR.W #2,D0
+0000712E  E378                     149          ROL.W D1,D0
+00007130                           150  
+00007130  E598                     151          ROL.L #2,D0
+00007132  E498                     152          ROR.L #2,D0
+00007134  E3B8                     153          ROL.L D1,D0
+00007136                           154          
+00007136  E7D1                     155          ROL (A1)
+00007138  E7D2                     156          ROL (A2)
+0000713A  E7D9                     157          ROL (A1)+
+0000713C  E7DA                     158          ROL (A2)+
+0000713E  E7E1                     159          ROL -(A1)
+00007140  E7E2                     160          ROL -(A2)
+00007142  E7F8 2000                161          ROL $2000
+00007146  E7F8 1222                162          ROL $1222
+0000714A  E7F9 0000A200            163          ROL $A200
+00007150  E7F9 FFFF5500            164          ROL $FFFF5500
+00007156                           165  
+00007156                           166  * Put variables and constants here
+00007156                           167  
+00007156                           168      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+NEXT6               7022
+START               7000

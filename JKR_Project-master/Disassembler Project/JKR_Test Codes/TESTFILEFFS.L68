@@ -1,0 +1,83 @@
+00007000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.15.04
+Created On: 3/12/2016 7:16:52 PM
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :  Test rotation
+00000000                             3  * Written by :  Joon Jung
+00000000                             4  * Date       :  03/13/2016
+00000000                             5  * Description:  Tests file for rotation cases W16
+00000000                             6  *-----------------------------------------------------------
+00007000                             7      ORG    $7000
+00007000                             8  START:                  ; first instruction of program
+00007000  E32A                       9          LSL.B   D1,D2
+00007002  E26B                      10          LSR.W   D1,D3
+00007004  E161                      11          ASL.W   D0,D1
+00007006  EE62                      12          ASR.W   D7,D2
+00007008  E9BA                      13          ROL.L   D4,D2
+0000700A  E74A                      14          LSL.W   #3,D2
+0000700C  EE8B                      15          LSR.L   #7,D3
+0000700E  E101                      16          ASL.B   #8,D1
+00007010  E482                      17          ASR.L   #2,D2
+00007012  EF3A                      18          ROL.B   D7,D2
+00007014  E2BE                      19          ROR.L   D1,D6
+00007016  E63E                      20          ROR.B   D3,D6
+00007018                            21          
+00007018  E7F9 FFFF6000             22          ROL     $FFFF6000
+0000701E  E6F8 8233                 23          ROR     $FFFF8233
+00007022  E0F9 00008000             24          ASR     $00008000
+00007028  E2F9 02021023             25          LSR     $2021023
+0000702E  E3F8 5034                 26          LSL     $5034
+00007032  E1F9 00FF0234             27          ASL     $FF0234
+00007038                            28          
+00007038  EB8A                      29          LSL.L   #5,D2
+0000703A  E26B                      30          LSR     D1,D3
+0000703C  E161                      31          ASL.W   D0,D1
+0000703E  EE64                      32          ASR.W   D7,D4
+00007040  E97A                      33          ROL     D4,D2
+00007042  E78E                      34          LSL.L   #3,D6
+00007044  EE8B                      35          LSR.L   #7,D3
+00007046  E141                      36          ASL.W   #8,D1
+00007048  E442                      37          ASR.W   #2,D2
+0000704A  EFB8                      38          ROL.L   D7,D0
+0000704C  E27C                      39          ROR     D1,D4
+0000704E  E47B                      40          ROR.W   D2,D3
+00007050  BABC 00050000             41          CMP.L   #$50000, D5     
+00007056  B43C 000C                 42          CMP.B   #12, D2
+0000705A  B67C 03E8                 43          CMP.W   #1000, D3
+0000705E  B8BC 000010CC             44          CMP.L   #4300, D4
+00007064  BA7C 1235                 45          CMP.W   #$1235, D5
+00007068  B401                      46          CMP.B   D1,D2
+0000706A  4280                      47          CLR.L   D0
+0000706C  4201                      48          CLR.B   D1
+0000706E  B411                      49          CMP.B   (A1),D2
+00007070  B419                      50          CMP.B   (A1)+,D2
+00007072  B421                      51          CMP.B   -(A1),D2
+00007074  B438 6000                 52          CMP.B   $6000,D2
+00007078  B439 00A05999             53          CMP.B   $00A05999,D2
+0000707E  4200                      54          CLR.B   D0
+00007080  4279 0004ABCD             55          CLR.W   $4ABCD
+00007086  4240                      56          CLR.W   D0
+00007088  4279 00AB5000             57          CLR.W   $AB5000
+0000708E  4252                      58          CLR.W   (A2)
+00007090  4205                      59          CLR.B   D5
+00007092  42B8 2302                 60          CLR.L   $2302
+00007096  4299                      61          CLR.L   (A1)+
+00007098  4204                      62          CLR.B   D4
+0000709A  B401                      63          CMP.B   D1,D2
+0000709C  4260                      64          CLR.W   -(A0)
+0000709E  42A5                      65          CLR.L   -(A5)
+000070A0  4266                      66          CLR.W   -(A6)
+000070A2  42A3                      67          CLR.L   -(A3)
+000070A4  42A4                      68          CLR.L   -(A4)
+000070A6                            69  
+000070A6                            70      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               7000

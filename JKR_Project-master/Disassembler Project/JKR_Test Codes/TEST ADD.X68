@@ -1,0 +1,343 @@
+*-----------------------------------------------------------
+* Title      :  Test Add
+* Written by :  Joon Jung
+* Date       :  03/13/2016
+* Description:  Tests add
+*-----------------------------------------------------------
+    ORG    $7000
+START:                  ; first instruction of program
+
+	*ADDA.W	
+		ADDA.W (A0)+,A2
+		ADDA.W (A1)+,A3
+		
+		ADDA.W -(A0),A2
+		ADDA.W -(A1),A3
+
+		ADDA.W D0,A0
+		ADDA.W D1,A1
+		
+		ADDA.W A0,A0
+		ADDA.W A1,A1
+		
+		ADDA.W (A0),A4
+		ADDA.W (A1),A5
+		
+		ADDA.W $2000,A6
+		ADDA.W $3000,A7
+		
+		ADDA.W $00002990,A0
+		ADDA.W $FFFF9110,A1
+		
+		ADDA.W #$001292,A2
+		ADDA.W #$0000A920,A3
+	
+	* NEED SUBA TO ADJUST
+		SUBA.W	#$0001,A0
+		SUBA.W	#$0001,A1
+		SUBA.W	#$0001,A2
+		SUBA.W	#$0001,A3	
+	
+	*ADDA.L	
+		ADDA.L (A0)+,A2
+		ADDA.L (A1)+,A3
+		
+		ADDA.L -(A0),A2
+		ADDA.L -(A1),A3
+
+		ADDA.L D0,A0
+		ADDA.L D1,A1
+		
+		ADDA.L A0,A0
+		ADDA.L A1,A1
+		
+		ADDA.L (A0),A4
+		ADDA.L (A1),A5
+		
+		ADDA.L $2000,A6
+		ADDA.L $3000,A7
+	
+		ADDA.L $00002990,A0
+		ADDA.L $FFFF9110,A1
+		
+		ADDA.L #$001292,A2
+		ADDA.L #$0000A920,A3
+	
+	* NEED SUBA TO ADJUST
+		SUBA.L	#$00AA0001,A0
+		SUBA.L	#$00AA0001,A1
+		SUBA.L	#$00AA0001,A2
+		SUBA.L	#$00AA0001,A3
+	
+	*ADD.B	
+		ADD.B D0,D7
+		ADD.B D1,D6
+		ADD.B D2,D5
+		ADD.B D3,D4
+
+		ADD.B (A1),D0
+		ADD.B (A2),D1
+		ADD.B (A3),D2
+		ADD.B (A4),D3
+		
+		ADD.B (A1)+,D4
+		ADD.B (A2)+,D5
+		ADD.B (A3)+,D6
+		ADD.B (A4)+,D7
+		
+		ADD.B -(A1),D0
+		ADD.B -(A2),D1
+		ADD.B -(A3),D2
+		ADD.B -(A4),D3
+		
+		ADD.B	$1020,D0
+		ADD.B	$1800,D1
+		ADD.B	$FFFF8500,D2
+		ADD.B	$FFFFA200,D3
+		
+		ADD.B	$0000A030,D4
+		ADD.B	$00031810,D5
+		ADD.B	$FFFF2580,D6
+		ADD.B	$F0000210,D7
+		
+		ADD.B	#$E2,D4
+		ADD.B	#$42,D5
+		ADD.B	#$F4,D6
+		ADD.B	#$CD,D7
+		
+		ADD.B	D0,(A0)
+		ADD.B	D1,(A1)
+		ADD.B	D2,(A2)
+		ADD.B	D3,(A3)
+		
+		ADD.B	D4,(A4)+
+		ADD.B	D5,(A5)+
+		ADD.B	D6,(A6)+
+		ADD.B	D7,(A7)+
+		
+		ADD.B	D4,-(A4)
+		ADD.B	D5,-(A5)
+		ADD.B	D6,-(A6)
+		ADD.B	D7,-(A7)
+
+		ADD.B	D0,$1020
+		ADD.B	D1,$1800
+		ADD.B	D2,$FFFF8500
+		ADD.B	D3,$FFFFA200
+		
+		ADD.B	D4,$0000A030
+		ADD.B	D5,$00031810
+		ADD.B	D6,$FFFF2580
+		ADD.B	D7,$F0000210		
+	
+		
+		*ADD.W
+		
+		ADD.W	D0,D7
+		ADD.W	D1,D6
+		ADD.W	D2,D5
+		ADD.W	D3,D4
+		ADD.W	D4,D3
+		ADD.W	D5,D2
+		ADD.W	D6,D1
+		ADD.W	D7,D0
+		
+		ADD.W	A4,D3
+		ADD.W	A5,D2
+		ADD.W	A6,D1
+		ADD.W	A7,D0
+		
+		ADD.W	(A1),D0
+		ADD.W	(A2),D1
+		ADD.W	(A3),D2
+		ADD.W	(A4),D3
+		
+		ADD.W	(A1)+,D4
+		ADD.W	(A2)+,D5
+		ADD.W	(A3)+,D6
+		ADD.W	(A4)+,D7
+		
+		ADD.W	-(A1),D0
+		ADD.W	-(A2),D1
+		ADD.W	-(A3),D2
+		ADD.W	-(A4),D3
+		
+		ADD.W	$1020,D0
+		ADD.W	$1800,D1
+		ADD.W	$FFFF8500,D2
+		ADD.W	$FFFFA200,D3
+		
+		ADD.W	$00AA1030,D4
+		ADD.W	$00231810,D5
+		ADD.W	$FFFF2580,D6
+		ADD.W	$F0000210,D7
+		
+		ADD.W	#$12E2,D4
+		ADD.W	#$4542,D5
+		ADD.W	#$77F4,D6
+		ADD.W	#$FFCD,D7		
+		
+		ADD.W	D0,(A0)
+		ADD.W	D1,(A1)
+		ADD.W	D2,(A2)
+		ADD.W	D3,(A3)
+
+		ADD.W	D4,(A4)+
+		ADD.W	D5,(A5)+
+		ADD.W	D6,(A6)+
+		ADD.W	D7,(A7)+
+		
+		ADD.W	D4,-(A4)
+		ADD.W	D5,-(A5)
+		ADD.W	D6,-(A6)
+		ADD.W	D7,-(A7)
+
+		ADD.W	D0,$1020
+		ADD.W	D1,$1800
+		ADD.W	D2,$FFFF8500
+		ADD.W	D3,$FFFFA200
+		
+		ADD.W	D4,$0000A030
+		ADD.W	D5,$00031810
+		ADD.W	D6,$FFFF2580
+		ADD.W	D7,$F0000210		
+		
+		
+		
+		*ADD.L
+		
+		ADD.L	D0,D7
+		ADD.L	D1,D6
+		ADD.L	D2,D5
+		ADD.L	D3,D4
+		ADD.L	D4,D3
+		ADD.L	D5,D2
+		ADD.L	D6,D1
+		ADD.L	D7,D0
+		
+		ADD.L	A4,D3
+		ADD.L	A5,D2
+		ADD.L	A6,D1
+		ADD.L	A7,D0
+		
+		ADD.L	(A1),D0
+		ADD.L	(A2),D1
+		ADD.L	(A3),D2
+		ADD.L	(A4),D3
+		
+		ADD.L	(A1)+,D4
+		ADD.L	(A2)+,D5
+		ADD.L	(A3)+,D6
+		ADD.L	(A4)+,D7
+		
+		ADD.L	-(A1),D0
+		ADD.L	-(A2),D1
+		ADD.L	-(A3),D2
+		ADD.L	-(A4),D3
+		
+		ADD.L	$1020,D0
+		ADD.L	$1800,D1
+		ADD.L	$FFFF8500,D2
+		ADD.L	$FFFFA200,D3
+		
+		ADD.L	$00AA1030,D4
+		ADD.L	$00231810,D5
+		ADD.L	$FFFF2580,D6
+		ADD.L	$F0000210,D7
+		
+		ADD.L	#$001203E2,D4
+		ADD.L	#$20042242,D5
+		ADD.L	#$12FFFFF4,D6
+		ADD.L	#$FFCC23CD,D7
+
+		ADD.L	D0,(A0)
+		ADD.L	D1,(A1)
+		ADD.L	D2,(A2)
+		ADD.L	D3,(A3)
+
+		ADD.L	D4,(A4)+
+		ADD.L	D5,(A5)+
+		ADD.L	D6,(A6)+
+		ADD.L	D7,(A7)+
+		
+		ADD.L	D4,-(A4)
+		ADD.L	D5,-(A5)
+		ADD.L	D6,-(A6)
+		ADD.L	D7,-(A7)
+
+		ADD.L	D0,$1020
+		ADD.L	D1,$1800
+		ADD.L	D2,$FFFF8500
+		ADD.L	D3,$FFFFA200
+		
+		ADD.L	D4,$0000A030
+		ADD.L	D5,$00031810
+		ADD.L	D6,$FFFF2580
+		ADD.L	D7,$F0000210		
+		
+	*ADDI.B
+		ADDI.B	#$22,D0
+		ADDI.B	#$A1,D1
+		
+		ADDI.B	#$45,(A2)
+		ADDI.B	#$A5,(A3)
+		
+		ADDI.B	#$12,(A2)+
+		ADDI.B	#$2D,(A3)+
+		
+		ADDI.B	#$24,-(A2)
+		ADDI.B	#$1C,-(A3)
+		
+		ADDI.B	#$9,$3050
+		ADDI.B	#$A2,$1500
+		
+		ADDI.B	#$20,$002456D2
+		ADDI.B	#$10,$00FF23D0
+				
+	*ADDI.W
+		ADDI.W	#$2212,D0
+		ADDI.W	#$A122,D1
+		
+		ADDI.W	#$7654,(A2)
+		ADDI.W	#$5AA5,(A3)
+		
+		ADDI.W	#$1212,(A2)+
+		ADDI.W	#$2D2D,(A3)+
+		
+		ADDI.W	#$2423,-(A2)
+		ADDI.W	#$1C56,-(A3)
+		
+		ADDI.W	#$2419,$3050
+		ADDI.W	#$77A2,$1500
+		
+		ADDI.W	#$1220,$002456D2
+		ADDI.W	#$CC10,$00FF23D0
+
+	*ADDI.L
+		ADDI.L	#$FF232212,D0
+		ADDI.L	#$0024AA6A,D1
+		
+		ADDI.L	#$0000000A,(A2)
+		ADDI.L	#$0A2412A5,(A3)
+		
+		ADDI.L	#$12348812,(A2)+
+		ADDI.L	#$55552D00,(A3)+
+		
+		ADDI.L	#$AAAA2423,-(A2)
+		ADDI.L	#$00000C56,-(A3)
+		
+		ADDI.L	#$0048ABCE,$3330
+		ADDI.L	#$000000A2,$1520
+		
+		ADDI.L	#$98731220,$002456D2
+		ADDI.L	#$7777CC10,$00FF23D0
+	
+    END    START        ; last line of source
+
+
+
+
+*~Font name~Courier New~
+*~Font size~10~
+*~Tab type~1~
+*~Tab size~4~
